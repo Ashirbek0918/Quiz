@@ -8,14 +8,9 @@ class ParticipantWithExamAttemptData extends DataObjectBase
 {
 
 
-    public int $id;
-    public string $fullname;
-    public string $username;
-    public  string $pinfl;
-    public string $birthdate;
-    public string $passport;
-    public int $branchId;
-    public int $positionId;
+    public ?int $id;
+    public ?string $fullname;
+    public ?string $username;
 
     public  array|ParticipantExamAttemptData $participantExamAttempts = [];
 }

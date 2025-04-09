@@ -1,4 +1,4 @@
-<div class="modal fade" id="m_modal_attempt_{{ $employee->id }}" tabindex="-1" role="dialog"
+<div class="modal fade" id="m_modal_attempt_{{ $participant->id }}" tabindex="-1" role="dialog"
      style="display: none; padding-right: 15px;">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -15,15 +15,15 @@
                         <th>{{ __('quiz.employee.correct_answers_count') }}</th>
                         <th>{{ __('form.actions') }}</th>
                     </tr>
-                    @foreach($employee->employeeExamAttempts as $employeeAttempt)
-                        <tr @if(is_null($employeeAttempt->checked_by)) class="bg-light" @endif>
+                    @foreach($participant->participantExamAttempts as $participantAttempt)
+                        <tr @if(is_null($participantAttempt->checked_by)) class="bg-light" @endif>
                             <td>
-                                <a href="{{ route('exams.result', [$employeeAttempt->id]) }}">{{ $employeeAttempt->question_count }}</a>
+                                <a href="{{ route('exams.result', [$participantAttempt->id]) }}">{{ $participantAttempt->question_count }}</a>
                             </td>
-                            <td>{{ $employeeAttempt->correct_answers_count }}</td>
+                            <td>{{ $participantAttempt->correct_answers_count }}</td>
                             <td>
-                                @if($employeeAttempt->exists_practical)
-                                    <a href="{{ route('exams.showAttempt', [ $employeeAttempt->id]) }}">{{ __('quiz.exams.check') }}</a>
+                                @if($participantAttempt->exists_practical)
+                                    <a href="{{ route('exams.showAttempt', [ $participantAttempt->id]) }}">{{ __('quiz.exams.check') }}</a>
                                 @endif
                             </td>
                         </tr>

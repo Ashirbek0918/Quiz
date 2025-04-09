@@ -9,9 +9,9 @@
     </tr>
     </thead>
     <tbody>
-    @foreach($pagination->items() as $employee)
+    @foreach($pagination->items() as $participant)
         @php $correctAnswersCount = null; $checkedBy = null; @endphp
-        @foreach($employee->employeeExamAttempts as $attempt)
+        @foreach($participant->participantExamAttempts as $attempt)
             @php $correctAnswersCount = $attempt->correct_answers_count; $checkedBy = $attempt->checked_by; @endphp
             @break
         @endforeach
@@ -20,7 +20,7 @@
             <th scope="row">{{ ($pagination->currentpage()-1) * $pagination->perpage() + $loop->index + 1 }}</th>
             <td>
                 <a href="" data-toggle="modal"
-                   data-target="#m_modal_attempt_{{ $employee->id }}">{{ $employee->fullname }}</a>
+                   data-target="#m_modal_attempt_{{ $participant->id }}">{{ $participant->fullname }}</a>
                 @include('admin.quiz.exams.attempt_show')
             </td>
             <td>

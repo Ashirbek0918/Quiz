@@ -8,21 +8,24 @@ use Illuminate\Support\Carbon;
 class ParticipantExamAttemptViewModel extends BaseViewModel
 {
 
-    public int $id;
-    public int $participant_id;
-    public string $start_time;
-    public string $end_time;
-    public int $exam_id;
-    public int $question_count;
-    public int $correct_answers_count = 0;
-    public array $questions;
+    public ?int $id;
+    public ?int $participant_id;
+    public ?string $fullname;
+    public ?string $username;
+    public ?string $start_time;
+    public ?string $end_time;
+    public ?int $exam_id;
+    public ?int $question_count;
+    public ?int $correct_answers_count = 0;
+    public ?array $questions;
     public ?array $participant_answers;
+    public  $participantExamAttempts;
     public ?string $body = '';
     public ?array $practical_answers = [];
-    public bool $attempt_completed;
+    public ?bool $attempt_completed;
     public ?string $remaining_time;
-    public bool $status = true;
-    public bool $exists_practical = false;
+    public ?bool $status = true;
+    public ?bool $exists_practical = false;
     public ?int $checked_by;
     public ?array $checked_answers = [];
     protected function populate(): void

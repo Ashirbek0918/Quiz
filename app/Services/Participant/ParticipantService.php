@@ -14,7 +14,7 @@ class ParticipantService
 {
     public function paginate(int $page = 1, int $limit = 10, ?iterable $filters = null): DataObjectCollection
     {
-        $query = Participant::applyEloquentFilters($filters)->with(['position.department', 'branch', 'department','files'])
+        $query = Participant::applyEloquentFilters($filters)
             ->orderBy('id', 'desc');
         $total = $query->count();
         $skip = ($page - 1) * $limit;
@@ -96,7 +96,7 @@ class ParticipantService
 
     public function paginateParticipant(int $examId, int $page = 1, int $limit = 10, ?iterable $filters = null): DataObjectCollection
     {
-        $query = Participant::applyEloquentFilters($filters)->with(['position', 'participantExamAttempts' => function ($query) use ($examId) {
+        $query = Participant::applyEloquentFilters($filters)->with([ 'participantExamAttempts' => function ($query) use ($examId) {
             $query->where('exam_id', '=', $examId)->orderByDesc('correct_answers_count');
         }])->orderBy('id', 'desc');
         $total = $query->count();

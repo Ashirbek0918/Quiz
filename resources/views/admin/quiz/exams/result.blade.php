@@ -45,7 +45,7 @@
                                         <div class="col-1">
                                             @if($answer->is_correct)
                                                 <i class="fa  fa-check-square text-success "></i>
-                                            @elseif(in_array($answer->id, $item->employee_answers[$question->id]) && !$answer->is_correct)
+                                            @elseif(in_array($answer->id, $item->participant_answers[$question->id]) && !$answer->is_correct)
                                                 <i class="fa fa-times  text-danger "></i>
                                             @endif
                                         </div>
@@ -53,19 +53,19 @@
                                             <input
                                                 @if($question->type == 1) type="radio"
                                                 @php $question_answers = [];
-                                                    foreach ($question->answers as $answer_employee){
-                                                        if ($answer_employee->is_correct){
-                                                            $question_answers[] = $answer_employee->id;
+                                                    foreach ($question->answers as $answer_participant){
+                                                        if ($answer_participant->is_correct){
+                                                            $question_answers[] = $answer_participant->id;
                                                         }
                                                     }
-                                                    if(!array_diff($question_answers,$item->employee_answers[$question->id]) &&  !array_diff($item->employee_answers[$question->id],$question_answers)){
+                                                    if(!array_diff($question_answers,$item->participant_answers[$question->id]) &&  !array_diff($item->participant_answers[$question->id],$question_answers)){
                                                         $ids[] = $question->id;
                                                     }
                                                 @endphp
                                                 @elseif($question->type == 2) type="checkbox"
-                                                @php if(in_array($answer->id,$item->employee_answers[$question->id]) && $answer->is_correct){ $ids[] = $question->id;} @endphp
+                                                @php if(in_array($answer->id,$item->participant_answers[$question->id]) && $answer->is_correct){ $ids[] = $question->id;} @endphp
                                                 @endif
-                                                @checked(in_array($answer->id, $item->employee_answers[$question->id]))
+                                                @checked(in_array($answer->id, $item->participant_answers[$question->id]))
                                                 name="answers[{{ $question->id }}][]"
                                                 value="{{ $answer->id }}"
                                                 id="answer_{{ $loop->parent->iteration }}"
