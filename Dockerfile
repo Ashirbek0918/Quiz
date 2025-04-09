@@ -34,20 +34,12 @@ RUN useradd -G www-data,root -u $uid -d /home/$user $user && \
     mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
 
-# Install dependencies
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader --ignore-platform-req=ext-gd
 
-
-
-# Create .env file
-RUN cp .env.example .env
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www && \
     chmod -R 755 /var/www/storage
 
-# Generate app key
-RUN php artisan key:generate
 
 # Switch to new user
 USER $user
