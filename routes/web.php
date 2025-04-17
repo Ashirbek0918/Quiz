@@ -93,4 +93,9 @@ Route::middleware(['auth', 'lang'])->prefix('admin')->group(function () {
     });
     Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
 
+
+    Route::controller(\App\Http\Controllers\FileUploadController::class)->prefix('fileUpload')->name('fileUpload.')->group(function () {
+        Route::post('upload', 'upload')->name('upload');
+        Route::get('view', 'view')->name('view');
+    });
 });

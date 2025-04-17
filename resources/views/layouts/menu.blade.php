@@ -44,6 +44,19 @@
                         </ul>
                     </li>
 
+                <li class="@if(request()->routeIs('fileUpload.*')) active open @endif">
+                    <a href="javascript:void(0);"><i class="fa fa-calendar-check-o"></i>
+                        <span>File Upload</span><i class="accordion-icon fa fa-angle-left"></i></a>
+                    <ul class="sub-menu" style="display:block">
+
+                        <li @if(request()->routeIs('fileUpload.*')) class="active" @endif >
+                            <a href="{{ route('fileUpload.view') }}"><i class="fa fa-file-upload"></i>
+                                <span>Upload</span></a>
+                        </li>
+
+                    </ul>
+                </li>
+
             </ul>
         </div>
         <!--================================-->
